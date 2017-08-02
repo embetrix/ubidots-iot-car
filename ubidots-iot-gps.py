@@ -25,9 +25,7 @@ import sys
 import configuration as cfg
 from urlparse import urljoin
 
-ubiurl_pos= urljoin(cfg.base_url, cfg.device + cfg.position + cfg.token )
-print ubiurl_pos
-
+ubiurl_gps= urljoin(cfg.base_url, cfg.device + cfg.position + cfg.token)
 gps_data = json.loads('{"value": 0, "context": {"lat": 0, "lng": 0}}')
 
 gps_input = open(cfg.gpsport, "r")

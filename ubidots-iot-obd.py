@@ -25,7 +25,7 @@ import sys
 import configuration as cfg
 from urlparse import urljoin
 
-ubiurl= urljoin(cfg.base_url, cfg.device + cfg.token)
+ubiurl_obd= urljoin(cfg.base_url, cfg.device + cfg.token)
 obd_data = json.loads('{"rpm": 0, "speed": 0, "fuel": 0, "maf" : 0, "load" : 0, "temp" : 0}')
  
 def callback_rpm(r):
@@ -61,5 +61,5 @@ if not connection.is_connected():
 
 while(True):
      print obd_data
-     r = requests.post(ubiurl, json=obd_data)
+     r = requests.post(ubiurl_obd, json=obd_data)
      time.sleep(cfg.period)
