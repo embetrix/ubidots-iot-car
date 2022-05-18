@@ -28,8 +28,8 @@ position = '/position/values'
 period = 0.5
 
 #OBD Port
-obdport = '/dev/pts/18'
+obdport = '/dev/pts/4'
 
 #GPS Port
-gpsport = '/dev/ttyACM0'
-#gpsport = 'test.nmea'
+#gpsport = '/dev/ttyACM0'
+gpsport = 'test.nmea'

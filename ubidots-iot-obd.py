@@ -23,7 +23,7 @@ import json
 import time 
 import sys
 import configuration as cfg
-from urlparse import urljoin
+from urllib.parse import urljoin
 
 ubiurl_obd= urljoin(cfg.base_url, cfg.device + cfg.token)
 obd_data = json.loads('{"rpm": 0, "speed": 0, "fuel": 0, "maf" : 0, "load" : 0, "temp" : 0}')
@@ -56,10 +56,10 @@ connection.watch(obd.commands.COOLANT_TEMP, callback=callback_temp)
 connection.start()
 
 if not connection.is_connected():
-    print 'ODB connection failed!'
+    print('ODB connection failed!')
     sys.exit(1)
 
 while(True):
-     print obd_data
+     print(obd_data)
      r = requests.post(ubiurl_obd, json=obd_data)
      time.sleep(cfg.period)

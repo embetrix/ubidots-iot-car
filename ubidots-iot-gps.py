@@ -23,7 +23,7 @@ import json
 import time 
 import sys
 import configuration as cfg
-from urlparse import urljoin
+from urllib.parse import urljoin
 
 ubiurl_gps= urljoin(cfg.base_url, cfg.device + cfg.position + cfg.token)
 gps_data = json.loads('{"value": 0, "context": {"lat": 0, "lng": 0}}')
@@ -35,7 +35,7 @@ try:
    gps_input = open(cfg.gpsport, "r")
 
 except IOError:
-    print "Could not get GPS port:", fname
+    print("Could not get GPS port:%s", fname)
     sys.exit(1)
 
 
@@ -44,6 +44,6 @@ while (True):
         if isinstance(msg, pynmea2.types.talker.RMC):
             gps_data['context']['lat'] = msg.latitude
             gps_data['context']['lng'] = msg.longitude
-            print gps_data
-            r = requests.post(ubiurl_pos, json=gps_data)
+            print(gps_data)
+            r = requests.post(ubiurl_gps, json=gps_data)
             time.sleep(cfg.period)
